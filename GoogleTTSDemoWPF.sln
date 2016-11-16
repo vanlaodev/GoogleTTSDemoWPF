@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTTSDemoWPF", "GoogleTTSDemoWPF\GoogleTTSDemoWPF.csproj", "{9A9BBBEF-838E-40FA-964F-A5C0DE531559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMvvmLib", "..\WpfMvvmLib\WpfMvvmLib\WpfMvvmLib.csproj", "{5B6DF046-9735-4D55-AA72-A0DF2CDB3271}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9A9BBBEF-838E-40FA-964F-A5C0DE531559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A9BBBEF-838E-40FA-964F-A5C0DE531559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A9BBBEF-838E-40FA-964F-A5C0DE531559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6DF046-9735-4D55-AA72-A0DF2CDB3271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6DF046-9735-4D55-AA72-A0DF2CDB3271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6DF046-9735-4D55-AA72-A0DF2CDB3271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6DF046-9735-4D55-AA72-A0DF2CDB3271}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

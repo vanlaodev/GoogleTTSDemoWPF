@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GoogleTTS
+namespace GoogleTTSDemoWPF
 {
     /// <summary>
     ///     Interaction logic for App.xaml

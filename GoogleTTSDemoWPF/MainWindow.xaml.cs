@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 
-namespace GoogleTTS
+namespace GoogleTTSDemoWPF
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

@@ -1,0 +1,3 @@
+[submodule "WpfMvvmLib"]
+	path = WpfMvvmLib
+	url = https://github.com/vanlaodev/WpfMvvmLib.git

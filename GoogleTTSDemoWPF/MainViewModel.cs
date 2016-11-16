@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using NAudio.Wave;
+using WpfMvvmLib;
 
-namespace GoogleTTS
+namespace GoogleTTSDemoWPF
 {
     public class MainViewModel : ViewModelBase
     {
         private static readonly string GoogleTTSApiUrl = "https://translate.google.com/translate_tts";
-        private static readonly string[] LanguageCodes = {"zh-yue", "ja", "en", "pt", "zh-TW"};
+        private static readonly string[] LanguageCodes = { "zh-yue", "ja", "en", "pt", "zh-TW" };
         private readonly WaveOutEvent _waveOutEvent;
 
         public MainViewModel()
@@ -21,10 +22,10 @@ namespace GoogleTTS
             _waveOutEvent.PlaybackStopped += WaveOutEventOnPlaybackStopped;
 
             Languages =
-                new ObservableCollection<string>(new[] {"Cantonese", "Japanese", "English", "Portugese", "Mandarin"});
+                new ObservableCollection<string>(new[] { "Cantonese", "Japanese", "English", "Portugese", "Mandarin" });
             SelectedLangIdx = 0;
-            PlayCmd = new RelayCommand(Play, CanPlay);
-            StopCmd = new RelayCommand(Stop, CanStop);
+            PlayCmd = new RelayCommand(CanPlay, Play);
+            StopCmd = new RelayCommand(CanStop, Stop);
         }
 
         public int SelectedLangIdx { get; set; }

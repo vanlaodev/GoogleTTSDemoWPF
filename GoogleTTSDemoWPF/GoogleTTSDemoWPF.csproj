@@ -126,7 +126,7 @@
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WpfMvvmLib\WpfMvvmLib\WpfMvvmLib.csproj">
+    <ProjectReference Include="..\WpfMvvmLib\WpfMvvmLib\WpfMvvmLib.csproj">
       <Project>{5b6df046-9735-4d55-aa72-a0df2cdb3271}</Project>
       <Name>WpfMvvmLib</Name>
     </ProjectReference>

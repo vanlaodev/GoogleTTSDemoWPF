@@ -50,7 +50,6 @@ namespace GoogleTTS
         private void Stop(object obj)
         {
             _waveOutEvent.Stop();
-            CommandManager.InvalidateRequerySuggested();
         }
 
         private bool CanPlay(object o)

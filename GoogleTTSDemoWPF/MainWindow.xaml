@@ -15,7 +15,7 @@
                       Background="{DynamicResource MaterialDesignPaper}"
                       FontFamily="{DynamicResource MaterialDesignFont}"
                       Title="Google TTS Demo" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen" FontSize="18"
+                      WindowStartupLocation="CenterScreen"
                       FocusManager.FocusedElement="{Binding ElementName=TxtContent}">
     <Grid>
         <Grid.RowDefinitions>

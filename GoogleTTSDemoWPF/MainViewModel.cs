@@ -15,6 +15,7 @@ namespace GoogleTTSDemoWPF
         private static readonly string GoogleTTSApiUrl = "https://translate.google.com/translate_tts";
         private static readonly string[] LanguageCodes = { "zh-yue", "ja", "en", "pt", "zh-TW" };
         private readonly WaveOutEvent _waveOutEvent;
+        private bool _playInProgress;
 
         public MainViewModel()
         {
@@ -26,17 +27,31 @@ namespace GoogleTTSDemoWPF
             SelectedLangIdx = 0;
             PlayCmd = new RelayCommand(CanPlay, Play);
             StopCmd = new RelayCommand(CanStop, Stop);
+            ClosingCmd = new RelayCommand(o => true, Closing);
+        }
+
+        private void Closing(object obj)
+        {
+            _waveOutEvent.Stop();
         }
 
         public int SelectedLangIdx { get; set; }
         public ObservableCollection<string> Languages { get; set; }
         public string Content { get; set; }
+        public RelayCommand ClosingCmd { get; set; }
         public RelayCommand PlayCmd { get; set; }
         public RelayCommand StopCmd { get; set; }
 
         private void WaveOutEventOnPlaybackStopped(object sender, StoppedEventArgs stoppedEventArgs)
         {
-            Application.Current.Dispatcher.Invoke(CommandManager.InvalidateRequerySuggested);
+            if (Application.Current != null)
+            {
+                var dispatcher = Application.Current.Dispatcher;
+                if (dispatcher != null)
+                {
+                    dispatcher.Invoke(CommandManager.InvalidateRequerySuggested);
+                }
+            }
             lock (_waveOutEvent)
             {
                 Monitor.Pulse(_waveOutEvent);
@@ -60,6 +75,8 @@ namespace GoogleTTSDemoWPF
 
         private void Play(object o)
         {
+            if (_playInProgress) return;
+            _playInProgress = true;
             Task.Factory.StartNew(() =>
             {
                 var ttsData = RetrieveGoogleTTSData();
@@ -69,7 +86,14 @@ namespace GoogleTTSDemoWPF
                     {
                         _waveOutEvent.Init(mp3);
                         _waveOutEvent.Play();
-                        Application.Current.Dispatcher.Invoke(CommandManager.InvalidateRequerySuggested);
+                        if (Application.Current != null)
+                        {
+                            var dispatcher = Application.Current.Dispatcher;
+                            if (dispatcher != null)
+                            {
+                                dispatcher.Invoke(CommandManager.InvalidateRequerySuggested);
+                            }
+                        }
                         lock (_waveOutEvent)
                         {
                             if (_waveOutEvent.PlaybackState == PlaybackState.Playing)
@@ -79,6 +103,7 @@ namespace GoogleTTSDemoWPF
                         }
                     }
                 }
+                _playInProgress = false;
             });
         }
 

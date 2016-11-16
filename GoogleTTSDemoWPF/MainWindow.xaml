@@ -7,6 +7,7 @@
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       TextElement.FontWeight="Medium"
                       TextElement.FontSize="13"
@@ -17,6 +18,11 @@
                       Title="Google TTS Demo" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen"
                       FocusManager.FocusedElement="{Binding ElementName=TxtContent}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ClosingCmd}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -52,8 +58,8 @@
                               VerticalContentAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <Button Content="PLAY" Command="{Binding PlayCmd}" />
-                    <Button Margin="8,0,0,0" Content="STOP" Command="{Binding StopCmd}" />
+                    <Button Content="PLAY" Command="{Binding PlayCmd}" IsDefault="True" />
+                    <Button Margin="8,0,0,0" Content="STOP" Command="{Binding StopCmd}" IsCancel="True" />
                 </StackPanel>
             </Grid>
         </Grid>
